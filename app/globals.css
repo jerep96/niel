@@ -3,22 +3,158 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #080c14;
+  --cyan: #4fc3f7;
+  --gold: #ffd54f;
+  --pink: #e91e8c;
+  --white: #f0f4ff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--navy);
+  color: var(--white);
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  overflow-x: hidden;
 }
+
+#star-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Fade-up animation classes */
+.fade-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+.delay-600 { transition-delay: 0.6s; }
+.delay-700 { transition-delay: 0.7s; }
+.delay-800 { transition-delay: 0.8s; }
+
+/* Card hover glow */
+.story-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 1px solid rgba(79, 195, 247, 0.15);
+}
+
+.story-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 32px rgba(79, 195, 247, 0.25), 0 8px 32px rgba(0, 0, 0, 0.6);
+  border-color: rgba(79, 195, 247, 0.5);
+}
+
+/* Pulse animation for timeline dots */
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(79, 195, 247, 0.6); }
+  50% { box-shadow: 0 0 0 8px rgba(79, 195, 247, 0); }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Scroll indicator bounce */
+@keyframes bounce-arrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.bounce-arrow {
+  animation: bounce-arrow 1.5s ease-in-out infinite;
+}
+
+/* Gradient text utility */
+.text-gradient-cyan {
+  background: linear-gradient(135deg, var(--cyan), #81d4fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--gold), #fff176);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-pink {
+  background: linear-gradient(135deg, var(--pink), #f48fb1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass card background */
+.glass {
+  background: rgba(8, 12, 20, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Visual area in cards */
+.card-visual {
+  background: linear-gradient(135deg, rgba(79, 195, 247, 0.06), rgba(233, 30, 140, 0.04));
+  border: 1px solid rgba(79, 195, 247, 0.12);
+}
+
+/* Timeline line */
+.timeline-line {
+  background: linear-gradient(to bottom, transparent, var(--cyan), var(--gold), var(--pink), transparent);
+}
+
+/* Waveform animation */
+@keyframes wave {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.8); }
+}
+
+.wave-bar {
+  animation: wave var(--duration, 1.2s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Glow effects */
+.glow-cyan { text-shadow: 0 0 20px rgba(79, 195, 247, 0.5); }
+.glow-gold { text-shadow: 0 0 20px rgba(255, 213, 79, 0.5); }
+.glow-pink { text-shadow: 0 0 20px rgba(233, 30, 140, 0.5); }
+
+/* Horizontal rule accent */
+.hr-accent {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--cyan), transparent);
+}
+
+/* Badge colors */
+.badge-cyan { background: rgba(79, 195, 247, 0.15); color: var(--cyan); border: 1px solid rgba(79, 195, 247, 0.4); }
+.badge-gold { background: rgba(255, 213, 79, 0.15); color: var(--gold); border: 1px solid rgba(255, 213, 79, 0.4); }
+.badge-pink { background: rgba(233, 30, 140, 0.15); color: var(--pink); border: 1px solid rgba(233, 30, 140, 0.4); }
 
 @layer utilities {
   .text-balance {

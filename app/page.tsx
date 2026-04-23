@@ -185,6 +185,25 @@ function VisualBooks() {
   );
 }
 
+// ── Coming-soon placeholder visual ───────────────────────────────────────────
+
+function VisualComingSoon({ accent = 'cyan' }: { accent?: 'cyan' | 'gold' }) {
+  const accentColor = accent === 'cyan' ? '#4fc3f7' : '#ffd54f';
+  return (
+    <div className="w-full max-w-lg mx-auto flex items-center justify-center py-4">
+      <div
+        className="coming-soon-border w-full rounded-2xl flex flex-col items-center justify-center gap-3 py-10 px-8"
+        style={{ color: accentColor }}
+      >
+        <div className="font-display text-5xl leading-none">✦</div>
+        <span className="font-mono text-xs tracking-widest uppercase">
+          Contenido en desarrollo
+        </span>
+      </div>
+    </div>
+  );
+}
+
 // ── Viñeta slide ──────────────────────────────────────────────────────────────
 
 type Accent = 'cyan' | 'gold' | 'pink';
@@ -362,6 +381,28 @@ const VIÑETAS: ViñetaSlideProps[] = [
     visual: <VisualBooks />,
     extra: 'Transición hacia módulos siguientes del proyecto grupal. Palabras clave: Claridad — Pasión — Impacto.',
   },
+  {
+    id: 'vineta-07',
+    number: '07',
+    accent: 'cyan',
+    module: 'Módulo 7',
+    title: 'Herramientas para presentar',
+    description: 'Análisis de las herramientas visuales y estructurales que utiliza Tyson en sus presentaciones: PowerPoint, Prezi, infografías, uso del color, tipografía y recursos de apoyo visual.',
+    visualLabel: 'A definir — recursos visuales del módulo',
+    visual: <VisualComingSoon accent="cyan" />,
+    extra: 'Relacionar con bibliografía: Nguyen et al. (2017) Presentaciones Memorables',
+  },
+  {
+    id: 'vineta-08',
+    number: '08',
+    accent: 'gold',
+    module: 'Módulo 8',
+    title: 'Storytelling',
+    description: 'Cómo Tyson construye relatos memorables: uso de la pasión, la razón y la estructura narrativa para hacer que conceptos científicos complejos sean accesibles e impactantes.',
+    visualLabel: 'A definir — fragmento de conferencia o entrevista',
+    visual: <VisualComingSoon accent="gold" />,
+    extra: 'Relacionar con bibliografía: Gallo (2017) Hable como en TED, pp. 57–77. Ethos, Pathos, Logos.',
+  },
 ];
 
 // ── Hero slide ────────────────────────────────────────────────────────────────
@@ -417,7 +458,7 @@ function Hero() {
       <div className="mt-6 fade-up delay-500">
         <div className="glass border border-white/10 rounded-xl px-6 py-3 inline-block">
           <span className="font-mono text-xs text-space/40 uppercase tracking-widest">Integrantes:</span>
-          <span className="font-mono text-sm text-space/70 ml-2">[nombres aquí]</span>
+          <span className="font-mono text-sm text-space/70 ml-2">Lautaro Pintos · Juan Francisco Oliva · Christelle Olivia Jadoul · Juan Martin Traina · Jeremias Palacios</span>
         </div>
       </div>
 
@@ -486,7 +527,7 @@ function FooterSlide() {
 
       <div className="mt-10 glass border border-white/10 rounded-xl px-6 py-3 inline-block">
         <span className="font-mono text-xs text-space/40 uppercase tracking-widest">Integrantes:</span>
-        <span className="font-mono text-sm text-space/70 ml-2">[nombres aquí]</span>
+        <span className="font-mono text-sm text-space/70 ml-2">Lautaro Pintos · Juan Francisco Oliva · Christelle Olivia Jadoul · Juan Martin Traina · Jeremias Palacios</span>
       </div>
     </section>
   );

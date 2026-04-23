@@ -166,6 +166,17 @@ body {
 .badge-gold { background: rgba(255, 213, 79, 0.15); color: var(--gold); border: 1px solid rgba(255, 213, 79, 0.4); }
 .badge-pink { background: rgba(233, 30, 140, 0.15); color: var(--pink); border: 1px solid rgba(233, 30, 140, 0.4); }
 
+/* Coming-soon placeholder */
+@keyframes coming-soon-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.72; }
+}
+
+.coming-soon-border {
+  border: 2px dashed currentColor;
+  animation: coming-soon-pulse 2.8s ease-in-out infinite;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -428,7 +428,7 @@ function Hero() {
       {/* Top label */}
       <div className="fade-up delay-100">
         <span className="font-mono text-xs tracking-widest text-cyan/60 uppercase border border-cyan/20 px-4 py-1.5 rounded-full">
-          Análisis Comunicacional · Módulos 1–6
+          Análisis Comunicacional
         </span>
       </div>
 
